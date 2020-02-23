@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>App para probar los componentes</h1>
+        <h1>learn react: App para probar los componentes</h1>
         <br/>
         <ErrorMessage
           />
