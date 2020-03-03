@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Base64 } from 'js-base64';
-
 
 const ErrorMessage = ({mensaje}) => {
     return (
@@ -30,7 +28,7 @@ ErrorMessage.propTypes = {
     })
 }
 
-ErrorMessage.defaultProps ={
+ErrorMessage.defaultProps = {
     title: "default Title",
     title2: "default Title2",
     permission: "default permission",
