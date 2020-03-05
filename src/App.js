@@ -16,9 +16,7 @@ function App() {
         <h1>learn react: App para probar los componentes</h1>
         <br/>
         {/* <Tooltips onChange={handleOnChange}/> */}
-        <InputColorPicker></InputColorPicker>
-        <br/>
-
+        <InputColorPicker onChange={handleOnChange}></InputColorPicker>
       </header>
     </div>
   );
