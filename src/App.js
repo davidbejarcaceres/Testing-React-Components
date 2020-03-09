@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ErrorMessage from './components/ErrorMessage';
-import Tooltips from "./components/Tooltips"
+import TdImageIconPicker from "./components/Tooltips"
 import InputColorPicker from './components/ColorComp';
 
 function handleOnChange(obj){
@@ -16,7 +16,7 @@ function App() {
         <h1>learn react: App para probar los componentes</h1>
         <br/>
         {/* <Tooltips onChange={handleOnChange}/> */}
-        <InputColorPicker onChange={handleOnChange}></InputColorPicker>
+        <TdImageIconPicker onChange={handleOnChange}></TdImageIconPicker>
       </header>
     </div>
   );

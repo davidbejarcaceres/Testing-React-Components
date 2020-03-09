@@ -138,4 +138,62 @@ Tooltips.defaultProps = {
   onChange: () => {}
 };
 
-export default Tooltips;
+
+function TdImageIconPicker({nodeInfo, updateNodeIcon}) {
+  // const [nodeIcon, setnodeIcon] = useState(nodeInfo);
+  // const [files, setfiles] = useState([]);
+  const [state, setstate] = useState({
+    nodeIcon: nodeInfo,
+    files: []
+  });
+
+  const handleIconChange = nodeIcon => {
+    updateNodeIcon(nodeIcon);
+    setstate({nodeIcon, files: []});
+    console.log(state);
+    debugger;
+  };
+
+  const getFiles = files => {
+    updateNodeIcon(files.base64);
+    setstate({files, nodeIcon: files.base64});
+    console.log(state);
+    debugger;
+  };
+
+  const {nodeIcon, files} = state;
+
+  let icon = null;
+  let image = null;
+  if (nodeIcon && nodeIcon.slice(0, 5) === 'data:') {
+    // Image
+    image = !Array.isArray(files) ? [files] : files;
+  } else {
+    // Icon
+    icon = nodeIcon;
+  }
+
+  return (
+    <div className='p-grid'>
+      <div className='p-col-6'>
+        <Tooltip buttonText='Icon' iconName={state.nodeIcon} onChange={handleIconChange} />
+      </div>
+      <div className='p-col-6'>
+        {/* <FileBase64 buttonText='Image' multiple={false} onDone={getFiles} files={image} removable={true} showMiniImg={true} /> */}
+      </div>
+    </div>
+  );
+}
+
+TdImageIconPicker.propTypes = {
+  nodeInfo: PropTypes.string,
+  updateNodeIcon: PropTypes.func
+};
+
+TdImageIconPicker.defaultProps = {
+  nodeInfo: '',
+  updateNodeIcon: () => {}
+};
+
+export default TdImageIconPicker;
+
