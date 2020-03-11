@@ -4,18 +4,22 @@ export const getImagesRelativePath = () => (process.env.PUBLIC_URL);
 
 const CopyRightComponent = ({copyRightData, intl}) => {
     const {appName, version, appUrl} = copyRightData ? copyRightData : {};
-    const imgSource = `${getImagesRelativePath()}/assets/layout/images/tedial.jpg`;
-    const imagen = new Image().src = imgSource;
     const [loadedImage, setloadedImage] = useState(false);
     function onLoadedImage() {
       setloadedImage(true);
     }
   
-    const renderContent = useCallback(() => (
+    return <div className="p-grid">
+      <div className="p-col-12 p-lg-12 p-md-12">
+        <img onLoad={onLoadedImage} src={`${getImagesRelativePath()}/assets/layout/images/tedial.jpg`} alt='Tedial' />
+      </div>
+  
+      {loadedImage &&
       <div>
         <div className="p-col-12 p-lg-12 p-md-12">
           <h4>{appName}</h4>
         </div>
+  
         <div className="p-col-12 p-lg-12 p-md-12">
           <span className="strongText">{intl.formatMessage({id: 'app.copyright.version', defaultMessage: 'Version:'})} {version}</span>
         </div>
@@ -41,20 +45,8 @@ const CopyRightComponent = ({copyRightData, intl}) => {
           </ul>
         </div>
       </div>
-    ), [appName, appUrl, intl, version]);
-  
-    const renderImage = useCallback(() => (
-      <div className="p-grid">
-        <div className="p-col-12 p-lg-12 p-md-12">
-          <img onLoad={onLoadedImage} src={imagen} alt='Tedial' />
-        </div>
-  
-        {loadedImage && renderContent()}
-      </div>
-  
-    ), [imagen, loadedImage, renderContent]);
-  
-    return renderImage();
+      }
+    </div>;
   };
   
   CopyRightComponent.propTypes = {
@@ -62,3 +54,4 @@ const CopyRightComponent = ({copyRightData, intl}) => {
     copyRightData: PropTypes.object
   };
   export default CopyRightComponent;
+  
