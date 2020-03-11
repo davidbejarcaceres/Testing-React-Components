@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Popover from 'react-tiny-popover';
+import {Tooltip} from 'react-tippy';
 import SvgIcon from './SvgIcon';
 import SvgButton from './SvgButton';
 import {Accordion, AccordionTab} from 'primereact/accordion';
